@@ -1,0 +1,3 @@
+[submodule "tpls/CheMPS2"]
+	path = tpls/CheMPS2
+	url = https://github.com/SebWouters/CheMPS2
