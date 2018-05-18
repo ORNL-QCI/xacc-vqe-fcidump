@@ -28,10 +28,7 @@
  *   Initial API and implementation - Alex McCaskey
  *
  **********************************************************************************/
-#define BOOST_TEST_DYN_LINK
-#define BOOST_TEST_MODULE FCIDumpPreprocessorTester
-
-#include <boost/test/included/unit_test.hpp>
+#include <gtest/gtest.h>
 #include "FCIDumpPreprocessor.hpp"
 #include "XACC.hpp"
 
@@ -166,7 +163,7 @@ public:
 
 };
 
-BOOST_AUTO_TEST_CASE(checkH2Process) {
+TEST(FCIDumpPreprocessorTester,checkH2Process) {
 
 	xacc::Initialize();
 	const std::string h2FciDump =
@@ -225,6 +222,10 @@ BOOST_AUTO_TEST_CASE(checkH2Process) {
 }
 )expected";
 
-	BOOST_VERIFY(expected == newKernelCode);
+	EXPECT_TRUE(expected == newKernelCode);
 	xacc::Finalize();
+}
+int main(int argc, char** argv) {
+   ::testing::InitGoogleTest(&argc, argv);
+   return RUN_ALL_TESTS();
 }
