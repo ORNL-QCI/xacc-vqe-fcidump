@@ -62,7 +62,11 @@ usFunctionEmbedResources(TARGET ${LIBRARY_NAME}
 
 #add_dependencies(${LIBRARY_NAME} chemps2)
 #link_directories(${CMAKE_BINARY_DIR}/tpls/CheMPS2/CheMPS2)
-target_link_libraries(${LIBRARY_NAME} ${XACC_LIBRARIES} ${CMAKE_BINARY_DIR}/tpls/CheMPS2/CheMPS2/libchemps2.so)
+#if(APPLE)
+#target_link_libraries(${LIBRARY_NAME} ${XACC_LIBRARIES} ${CMAKE_BINARY_DIR}/tpls/CheMPS2/CheMPS2/libchemps2.dylib)
+#else()
+target_link_libraries(${LIBRARY_NAME} ${XACC_LIBRARIES} chemps2) #${CMAKE_BINARY_DIR}/tpls/CheMPS2/CheMPS2/libchemps2.so)
+#endif()
 
 if(APPLE)
    set_target_properties(${LIBRARY_NAME} PROPERTIES INSTALL_RPATH "@loader_path/../lib;@loader_path")
